@@ -1,5 +1,7 @@
 import { Layout } from 'components/layout';
 import Home from 'pages/HomePage';
+import Login from 'pages/LoginPage';
+import Register from 'pages/RegisterPage';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -24,8 +26,8 @@ export function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path='/register'></Route>
-        <Route path='/login'></Route>
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
         <Route path='/contacts'></Route>
       </Route>
     </Routes>
