@@ -3,7 +3,7 @@ import Home from 'pages/HomePage';
 import Login from 'pages/LoginPage';
 import Register from 'pages/RegisterPage';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { fetchContacts } from 'redux/operation';
 // import ContactForm from '../contact-form/ContactForm';
