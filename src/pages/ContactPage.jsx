@@ -7,11 +7,11 @@ import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/operation';
 
 export default function ContactPage() {
- const dispatch = useDispatch();
- 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchContacts());
-  }, [dispatch]);
+  }, [dispatch]);  
 
   return (
     <div>
@@ -22,7 +22,7 @@ export default function ContactPage() {
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />
-      <ContactList />
+       <ContactList />
     </div>
   );
 }

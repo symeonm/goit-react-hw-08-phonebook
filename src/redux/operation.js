@@ -3,6 +3,14 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (newContact, api) => {
@@ -26,9 +34,9 @@ export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async id => {
+  async contactId => {
     try {
-      const resp = await axios.delete(`/contacts/${id}`);
+      const resp = await axios.delete(`/contacts/${contactId}`);
       return resp.data;
     } catch (e) {
       console.log(e);
@@ -41,6 +49,7 @@ export const register = createAsyncThunk(
   async registerData => {
     try {
       const resp = await axios.post('/users/signup', registerData);
+      setAuthHeader(resp.data.token);
       return resp.data;
     } catch (e) {
       console.log(e);
@@ -50,8 +59,8 @@ export const register = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logOut', async () => {
   try {
-    const resp = await axios.post('/users/logout');
-    return resp.data;
+    await axios.post('/users/logout');
+    clearAuthHeader();
   } catch (e) {
     console.log(e);
   }
@@ -60,6 +69,7 @@ export const logOut = createAsyncThunk('auth/logOut', async () => {
 export const logIn = createAsyncThunk('auth/login', async (userData) => {
   try {
     const resp = await axios.post('/users/login', userData);
+    setAuthHeader(resp.data.token);
     return resp.data
   } catch (e) {
     console.log(e);
@@ -76,7 +86,7 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (API) => {
   }
 
   try {
-    // setAuthHeader(persistedToken);
+    setAuthHeader(persistedToken);
     const res = await axios.get('/users/me');
     return res.data;
   } catch (error) {

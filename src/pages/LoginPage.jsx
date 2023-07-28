@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 
 export default function Login() {
   return (
-    <div>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
       <Helmet>
         <title>Login</title>
       </Helmet>

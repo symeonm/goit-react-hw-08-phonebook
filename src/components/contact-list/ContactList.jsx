@@ -11,7 +11,8 @@ const ContactList = () => {
   const deleteNumber = id => {
     dispatch(deleteContact(id));
   };
-  console.log(contact);
+  
+
 
   const filterContact = contact.filter(obj =>
     obj.name.toLowerCase().includes(filtration.toLowerCase())
@@ -19,9 +20,9 @@ const ContactList = () => {
 
   return (
     <ul>
-      {filterContact.map(({ id, name, phone }) => (
+      {filterContact.map(({ id, name, number }) => (
         <li key={id}>
-          {name}: {phone}
+          {name}: {number}
           <button
             id={id}
             onClick={() => {

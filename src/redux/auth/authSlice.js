@@ -24,7 +24,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     [logOut.fulfilled](state, action) {
-      state.contacts.items = [];
+      state.items = [];
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;

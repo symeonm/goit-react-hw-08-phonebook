@@ -20,8 +20,7 @@ export default function FormAdd() {
       dispatch(
         addContact({
           name: form.elements.name.value,
-          phone: form.elements.number.value,
-          // id: nanoid(),
+          number: form.elements.number.value,
         })
       );
 

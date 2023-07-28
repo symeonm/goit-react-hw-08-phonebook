@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 export default function Register() {
     return (
-      <div>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         <Helmet>
           <title>Registration</title>
         </Helmet>
