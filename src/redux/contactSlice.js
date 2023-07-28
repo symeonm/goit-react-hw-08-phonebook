@@ -12,6 +12,7 @@ const handleRejected = (state, action) => {
 
 const handleAddContact = (state, action) => {
   state.isLoading = false;
+  state.error = null;
   state.items.push(action.payload);
 };
 const contactSlice = createSlice({

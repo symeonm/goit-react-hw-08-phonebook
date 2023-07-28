@@ -47,3 +47,42 @@ export const register = createAsyncThunk(
     }
   }
 );
+
+export const logOut = createAsyncThunk('auth/logOut', async () => {
+  try {
+    const resp = await axios.post('/users/logout');
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+export const logIn = createAsyncThunk('auth/login', async (userData) => {
+  try {
+    const resp = await axios.post('/users/login', userData);
+    return resp.data
+  } catch (e) {
+    console.log(e);
+  }
+})
+
+export const refreshUser = createAsyncThunk('auth/refresh', async (API) => {
+  const state = API.getState();
+  const persistedToken = state.auth.token;
+
+
+  if (persistedToken === null) {
+    return API.rejectWithValue('Unable to fetch user');
+  }
+
+  try {
+    // setAuthHeader(persistedToken);
+    const res = await axios.get('/users/me');
+    return res.data;
+  } catch (error) {
+    return API.rejectWithValue(error.message);
+  }
+}
+)
+
+

@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/operation';
 import { useSelector } from 'react-redux';
@@ -21,7 +21,7 @@ export default function FormAdd() {
         addContact({
           name: form.elements.name.value,
           phone: form.elements.number.value,
-          id: nanoid(),
+          // id: nanoid(),
         })
       );
 
