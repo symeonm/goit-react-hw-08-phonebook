@@ -11,6 +11,7 @@ const ContactList = () => {
   const deleteNumber = id => {
     dispatch(deleteContact(id));
   };
+  console.log(contact);
 
   const filterContact = contact.filter(obj =>
     obj.name.toLowerCase().includes(filtration.toLowerCase())
